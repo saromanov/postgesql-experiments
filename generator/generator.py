@@ -13,5 +13,5 @@ def generate_rows(conn, table_name, n):
         )
         cursor.execute(insert)
 
-conn = psycopg2.connect(dbname='postgres', user='postgres', password='postgres', host='localhost')
+conn = psycopg2.connect(dbname='postgres', user='postgres', password='postgres', host='localhost', port=5433)
 generate_rows(conn, 10)

@@ -1,0 +1,1 @@
+sudo docker run -p 5433:5432 --rm --name pg3 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=postgres postgres:12-beta4
