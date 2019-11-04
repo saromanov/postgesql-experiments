@@ -1,7 +1,7 @@
 import psycopg2
+from datetime import datetime
 
-
-def create_table():
+def create_customers_table():
     commands = (
         """
         CREATE TABLE IF NOT EXIST customers(
@@ -18,13 +18,13 @@ def create_table():
             for data in commands:
                 conn.execute(data)
     )
-def generate_rows(conn, table_name, n):
+def generate_customers_rows(conn, table_name, n):
     with conn.cursor() as cursor:
         conn.autocommit = True
         values = [
-            ('ALA', 'Almaty', 'Kazakhstan'),
-            ('TSE', 'Astana', 'Kazakhstan'),
-            ('PDX', 'Portland', 'USA'),
+            ('Sergey', 'Rom', datetime.now()),
+            ('Ivan', 'Ivanov', datetime.now()),
+            ('Petr', 'Petrov', datetime.now()),
         ]
         insert = sql.SQL('INSERT INTO {} (code, name, country_name) VALUES {}').format(
             table_name, sql.SQL(',').join(map(sql.Literal, values))
